@@ -400,7 +400,7 @@ class MainApp(FloatLayout):
         self.add_generical_alert("")
     
     def update(self, *args):
-        os.system(f"./update.py")
+        subprocess.Popen("./update.py")
         sys.exit()
 
 class MyGest(App):
