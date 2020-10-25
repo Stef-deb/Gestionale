@@ -23,6 +23,11 @@ var.pop()
 var = "/".join(var)
 os.chdir(var)
 
+filesmn_path = subprocess.check_output("id -un", shell=True)
+filesmn_path = filesmn_path.decode("utf-8")
+filesmn_path = filesmn_path.replace("\n", "")
+filesmn_path = "/Users/" + filesmn_path + "/Desktop"
+
 Window.size = (1920, 1080)
 
 data_storage = JsonStore("data_store.json")
@@ -169,7 +174,7 @@ class MainApp(FloatLayout):
         self.title3 = Label(text = "Gestionale", font_size = 50, outline_color = (0,0,0,0), outline_width = 2, pos_hint = {"center_x":0.5, "center_y":0.966})
         self.backr = Button(background_color = (64/255, 121/255, 191/255, 1), background_normal = "", background_down = "", pos_hint = {"center_x":0.5, "center_y":0.5})
         self.toolbar3 =  Button(background_color = (191/255, 83/255, 64/255, 1), background_normal = "", background_down = "", size_hint = (1, 0.07), pos_hint = {"center_x":0.5, "top":1})
-        self.filechos = FileChooserIconView(pos_hint = {"center_x":0.5, "center_y":0.4})
+        self.filechos = FileChooserIconView(pos_hint = {"center_x":0.5, "center_y":0.4}, path = filesmn_path)
         self.exit_fl = Button(text = "Indietro", font_size = 30, pos_hint = {"center_x":0.93, "center_y":0.966}, background_down = "assets/Button_orange_2.png", background_normal = "assets/Button_orange_2.png", size_hint = (0.1, 0.06), on_press = self.add_filechos)
         self.get_file_b = Button(text = "Genera file", font_size = 30, pos_hint = {"center_x":0.5, "center_y":0.1}, background_down = "assets/Button_orange_2.png", background_normal = "assets/Button_orange_2.png", size_hint = (0.1, 0.06), on_press = self.get_file)
 
